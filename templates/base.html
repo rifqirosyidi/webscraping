@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,9 +7,69 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <title>Document</title>
 </head>
 <body>
-    <h1>Testing if this works</h1>
+<nav class="black">
+    <div class="container nav-wrapper">
+        <a href="/" class="brand-logo">Web Scraper</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 style="text-align: center">What do you want to Search?</h1>
+    <div class="row">
+        <div class="col s4">
+            <!-- Promo Content 1 goes here -->
+            <div class="center">
+                <i class="large material-icons">flash_on</i>
+                <p>Fast Craiglist Web Scraper</p>
+                <p class="light center">Scrape Website with More Beautiful UI</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <!-- Promo Content 2 goes here -->
+            <div class="center">
+                <i class="large material-icons">search</i>
+                <p>Filter Your Searches</p>
+                <p class="light center">Filter Search Based on Pricing</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <!-- Promo Content 3 goes here -->
+            <div class="center">
+                <i class="large material-icons">book</i>
+                <p>A Much Beautiful Front-end to Craigslist</p>
+                <p class="light center">We Build This with Django</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container center">
+    <form action="{% url 'new_search' %}" method="post">
+        {% csrf_token %}
+            <input type="text" name="search" placeholder="Search">
+            <button class="btn waves-effect waves-dark black" type="submit" name="action">Search
+                <i class="material-icons right">search</i>
+            </button>
+    </form>
+</div>
+
+<div class="container">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
