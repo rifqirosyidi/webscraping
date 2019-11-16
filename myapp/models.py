@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Search(models.Model):
-    search = models.CharField(max_length=100)
+    search = models.CharField(max_length=100, null=True, blank=True, default='')
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):

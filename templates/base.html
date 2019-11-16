@@ -58,7 +58,7 @@
 <div class="container center">
     <form action="{% url 'new_search' %}" method="post">
         {% csrf_token %}
-            <input type="text" name="search" placeholder="Search">
+            <input type="text" name="search" placeholder="Search" required>
             <button class="btn waves-effect waves-dark black" type="submit" name="action">Search
                 <i class="material-icons right">search</i>
             </button>
